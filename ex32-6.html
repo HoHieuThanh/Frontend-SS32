@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Resize Demo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 100px;
+        background-color: #f9f9f9;
+      }
+
+      #text {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        margin: 0 10px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+      }
+
+      .increase {
+        background-color: #4caf50;
+      }
+
+      .decrease {
+        background-color: #f44336;
+      }
+
+      .btn:hover {
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="text">Chữ sẽ thay đổi kích thước khi bấm nút</div>
+
+    <button class="btn increase">+</button>
+    <button class="btn decrease">-</button>
+
+    <script>
+      const textElement = document.getElementById("text");
+      const btnIncrease = document.querySelector(".increase");
+      const btnDecrease = document.querySelector(".decrease");
+
+      let currentFontSize = 24;
+
+      btnIncrease.addEventListener("click", () => {
+        currentFontSize += 2;
+        textElement.style.fontSize = currentFontSize + "px";
+      });
+
+      btnDecrease.addEventListener("click", () => {
+        if (currentFontSize > 10) {
+          // giới hạn
+          currentFontSize -= 2;
+          textElement.style.fontSize = currentFontSize + "px";
+        }
+      });
+    </script>
+  </body>
+</html>
