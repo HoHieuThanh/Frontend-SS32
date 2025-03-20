@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <input type="text" id="subject" placeholder="nhập tên môn học" />
+      <button type="submit">Thêm môn học</button>
+    </form>
+    <div id="errol" style="display: none"></div>
+    <ol></ol>
+    <script>
+      const formE = document.querySelector("form");
+      const inputE = document.querySelector("input");
+      const submitE = document.querySelector("button");
+      const errolE = document.querySelector("#errol");
+      const listE = document.querySelector("ol");
+      let inputValue;
+      let subjectList = [];
+
+      function renderSubject() {
+        // clear input cũ
+        listE.textContent = "";
+
+        subjectList.forEach((subject, index) => {
+          //tạo thẻ li
+          const liElement = document.createElement("li");
+
+          //gán nội dung li
+          liElement.textContent = subject;
+
+          //gán li làm con ol
+          listE.appendChild(liElement);
+        });
+      }
+
+      // Input
+      inputE.addEventListener("input", function (event) {
+        if (!event.target.value) {
+          errolE.style.display = "block";
+          errolE.textContent = "Tên môn học không được để trống";
+        } else {
+          errolE.style.display = "none";
+          inputValue = event.target.value;
+        }
+      });
+
+      // Submit
+      formE.addEventListener("submit", function (event) {
+        //ngăn load lại trang
+        event.preventDefault();
+        if (inputValue) {
+          //thêm input vào mảng
+          subjectList.push(inputValue);
+
+          //làm rỗng thanh input
+          inputE.value = "";
+          renderSubject();
+          alert("Thành công");
+        }
+      });
+    </script>
+  </body>
+</html>

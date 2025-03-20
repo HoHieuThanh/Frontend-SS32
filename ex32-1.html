@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>Đổi màu nền</button>
+    <script>
+      const bodyE = document.querySelector("body");
+      const btnE = document.querySelector("button");
+      function getRandomColor() {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        return `rgb(${r}, ${g}, ${b})`;
+      }
+      btnE.addEventListener("click", function () {
+        const randomColor = getRandomColor();
+        bodyE.style.backgroundColor = randomColor;
+      });
+    </script>
+  </body>
+</html>

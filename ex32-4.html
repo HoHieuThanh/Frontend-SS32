@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="email" id="email" />
+    <div id="errol"></div>
+  </body>
+  <script>
+    const inputE = document.querySelector("input");
+    const errolE = document.querySelector("#errol");
+
+    function validateEmail(email) {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|vn)$/;
+      return emailRegex.test(email);
+    }
+
+    inputE.addEventListener("input", function (event) {
+      if (validateEmail(event.target.value)) {
+        errolE.textContent = "Email hợp lệ";
+        errolE.style.color = "green";
+      } else {
+        errolE.textContent = "Email không hợp lệ";
+        errolE.style.color = "red";
+      }
+    });
+  </script>
+</html>
